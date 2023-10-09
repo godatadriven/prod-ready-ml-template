@@ -2,7 +2,7 @@
 name = "animal-shelter"
 version = "0.1.0"
 description = ""
-authors = ["David Coba <coba@cobac.eu>"]
+authors = ["Xebia Data <academy@xebia.com>"]
 readme = "README.md"
 packages = [{include = "animal_shelter", from = "src"}]
 
