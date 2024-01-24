@@ -40,4 +40,4 @@ You can close VS Code and the tabs you have opened in your browser, and start it
 
 ## About
 
-Xebia Data (c) 2023.
+Xebia Data (c) 2024.
