@@ -19,20 +19,19 @@ Alternatively, we provide a _devcontainer_ that spins up a virtual environment w
 The steps to set this up are:
 
 1. ✅ Access the repository
-2. Open or create a _codespace_ on the `main` branch. This will open a new browser tab with a browser version of VS code. It will take a few minutes to set up, but eventually you 
+2. Open or create a _codespace_ on the `main` branch. This will open a new browser tab with a browser version of VS code.
 
 ![images/create-codespace.png](images/create-codespace.png)
 
    > [Codespaces](https://docs.github.com/en/codespaces/overview) allow you to work on a repository on a computer other than your own, saving you from the trouble of setting everything up yourself.
-   
+
+It can take a few minutes to set up, but eventually the terminal tab will look ready accept new input. You can check that everything is ready by typing `poetry` into the terminal.
+
 ![images/codespace-browser.png](images/codespace-browser.png)
 
-3. (Optional) You can access the _codespace_ in your local version of VS Code Desktop. To do so, open the command palette in VS Code you have opened in your browser. To open the command palette, on Mac the shortcut is `⌘+SHIFT+P`, on Windows and Linux it is `Ctrl+Shift+P`. From the command palette, select "Codespaces: Open in VS Code Desktop", and follow the steps to open VS Code locally. ![images/open-vscode-desktop.png](images/open-vscode-desktop.png)
-4. You should now have access to the code, in your personal codespace, in your locally installed VS Code Desktop. To make sure everything is setup correctly you can:
-   - Inspect the bottom left corner, which should say "Codespaces" (may be located elsewhere in the Windows version)
-   - Open a terminal in VS Code and run `python -V`, which should return a Python version >= 3.9.
-   - Run `poetry -V`, which should return any version of Poetry.
-![images/codespace-vscode.png](images/codespace-vscode.png)
+3. (Optional) If you have VS Code installed in your computer, you can access the _codespace_ in your desktop editor. To do so, click the "Open in VS Code Desktop" option in the top-right menu under the _three horizontal bars_ icon.
+
+![images/codespace-vscode.png](images/codespace-desktop.png)
 
 That's it! You should be all setup now.
 You can close VS Code and the tabs you have opened in your browser, and start it up again during the training.
