@@ -29,7 +29,7 @@ It can take a few minutes to set up, but eventually the terminal tab will look r
 
 ![images/codespace-browser.png](images/codespace-browser.png)
 
-3. (Optional) If you have VS Code installed in your computer, you can access the _codespace_ in your desktop editor. To do so, click the "Open in VS Code Desktop" option in the top-right menu under the _three horizontal bars_ icon.
+3. (Optional) If you have VS Code installed in your computer, you can access the _codespace_ in your desktop editor. To do so, click the "Open in VS Code Desktop" option in the top-right menu under the _three horizontal bars_ icon. You might get a pop-up prompting you to install some extensions (e.g. for python, jupyter) if they are not already installed.
 
 ![images/codespace-vscode.png](images/codespace-desktop.png)
 
