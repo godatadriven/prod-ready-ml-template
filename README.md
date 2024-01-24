@@ -33,9 +33,7 @@ It can take a few minutes to set up, but eventually the terminal tab will look r
 
 ![images/codespace-vscode.png](images/codespace-desktop.png)
 
-That's it! You should be all setup now.
-You can close VS Code and the tabs you have opened in your browser, and start it up again during the training.
-
+That's it! You should be all setup now. If you are using VS Code desktop you can close the browser-based VS code tab.
 
 ## About
 
