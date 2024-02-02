@@ -3,6 +3,10 @@
 
     "postCreateCommand": "sh .devcontainer/devcontainer_setup.sh",
 
+    "settings": {
+        "terminal.integrated.copyOnSelection": true
+                },
+
     "customizations": {
         "vscode": {
             "extensions": [
