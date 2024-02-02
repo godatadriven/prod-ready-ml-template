@@ -20,7 +20,6 @@ uvicorn = "^0.23.2"
 jupyter = "^1.0.0"
 ruff = "^0.0.291"
 isort = "^5.12.0"
-black = "^23.9.1"
 mypy = "^1.5.1"
 
 [build-system]
