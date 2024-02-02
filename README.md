@@ -25,7 +25,7 @@ The steps to set this up are:
 
    > [Codespaces](https://docs.github.com/en/codespaces/overview) allow you to work on a repository on a computer other than your own, saving you from the trouble of setting everything up yourself.
 
-It can take a few minutes to set up, but eventually the terminal tab will look ready to accept new input. You can check that everything is ready by typing `poetry` into the terminal.
+It can take a few minutes to set up, but eventually you will be able to check that everything is ready by typing `poetry` into the terminal.
 
 ![images/codespace-browser.png](images/codespace-browser.png)
 
