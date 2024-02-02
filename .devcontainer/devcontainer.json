@@ -3,9 +3,6 @@
 
     "postCreateCommand": "sh .devcontainer/devcontainer_setup.sh",
 
-    "settings": {
-        "terminal.integrated.copyOnSelection": true
-                },
 
     "customizations": {
         "vscode": {
@@ -14,7 +11,10 @@
                 "ms-toolsai.jupyter",
                 "charliermarsh.ruff",
                 "matangover.mypy"
-            ]
+            ],
+            "settings": {
+                "terminal.integrated.copyOnSelection": true
+            }
         }
     }
 }
