@@ -10,13 +10,11 @@ app = FastAPI()
 model = joblib.load("output/outcome_model.pickle")
 
 
-@app.get("/api/v1/ping")
-def ping(n_times: int, text: str) -> str:
-    return text * n_times
-
-
-@app.post("/api/v1/predict/")
+@app.post("predict/")
 def predict(file: UploadFile = File(...)) -> StreamingResponse:
+    """
+    Endpoint definition to showcase how to stream output as .csv files.
+    """
     input_data = pd.read_csv(file.file)
 
     # Process data.

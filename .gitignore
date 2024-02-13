@@ -9,3 +9,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# caches
+**/__pycache__/
+.ruff_cache/**
+
+output/**
+!output/.gitkeep

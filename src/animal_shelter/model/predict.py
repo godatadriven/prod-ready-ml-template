@@ -1,0 +1,46 @@
+from pathlib import Path
+import logging
+
+import joblib
+import numpy as np
+from sklearn.pipeline import Pipeline
+
+from animal_shelter.data import load_data
+from animal_shelter.features import add_features
+
+
+def load_model(model_path: Path) -> Pipeline:
+    """
+    Load the model from the given path
+    :param model_path: path to the model
+    :return: model pipeline
+    """
+    return joblib.load(model_path)
+
+
+def predict(data: Path, model_path: Path) -> np.ndarray:
+    """
+    Generate predictions on the provided data.
+    :data: path to the data
+    :model_path: which model to use
+    """
+    logger = logging.getLogger(__name__)
+
+    raw_data = load_data(data)
+    with_features = add_features(raw_data)
+
+    categorical_features = [
+        "animal_type",
+        "is_dog",
+        "has_name",
+        "sex",
+        "hair_type",
+    ]
+    numeric_features = ["days_upon_outcome"]
+
+    X = with_features[categorical_features + numeric_features]
+    logger.debug("Using model %s", model_path)
+    model = load_model(model_path)
+
+    logger.info("Generating predictions")
+    return model.predict(X)

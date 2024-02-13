@@ -1,23 +1,25 @@
 import re
+from pathlib import Path
 
 import logging
 
 import pandas as pd
 
 
-def load_data(path):
+def load_data(path: Path):
     """Load the data and convert the column names.
 
     Parameters
     ----------
     path : str
         Path to data
+
     Returns
     -------
     df : pandas.DataFrame
         DataFrame with data
-    """
 
+    """
     logger = logging.getLogger(__name__)
     logger.info("Reading data from %s", path)
 
