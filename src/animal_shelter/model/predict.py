@@ -15,6 +15,7 @@ def load_model(model_path: Path) -> Pipeline:
     :param model_path: path to the model
     :return: model pipeline
     """
+    # This function could point to an experiment tracking system instead of to a local serialized model
     return joblib.load(model_path)
 
 
