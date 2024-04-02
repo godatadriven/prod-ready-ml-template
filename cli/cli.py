@@ -33,4 +33,4 @@ def predict(input_path: Path, model_path: Path, output_path: Path) -> None:
     predictions = predict_model(input_path, model_path)
 
     typer.echo(f"Writing predictions to {output_path}")
-    pd.Series(predictions).to_csv(output_path, index=False, header=False)
+    predictions.to_csv(output_path, index=False, header=True)
