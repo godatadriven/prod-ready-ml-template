@@ -3,6 +3,7 @@ import logging
 
 import joblib
 import numpy as np
+import pandas as pd
 from sklearn.pipeline import Pipeline
 
 from animal_shelter.data import load_data
@@ -19,7 +20,7 @@ def load_model(model_path: Path) -> Pipeline:
     return joblib.load(model_path)
 
 
-def predict(data: Path, model_path: Path) -> np.ndarray:
+def predict(data: Path, model_path: Path) -> pd.DataFrame:
     """
     Generate predictions on the provided data.
     :data: path to the data
@@ -44,4 +45,14 @@ def predict(data: Path, model_path: Path) -> np.ndarray:
     model = load_model(model_path)
 
     logger.info("Generating predictions")
-    return model.predict(X)
+
+
+    y_pred = model.predict_proba(X)
+
+    # Combine predictions with class names and animal name.
+    classes = model.classes_.tolist()
+    proba_df = pd.DataFrame(y_pred, columns=classes)
+
+    predictions = raw_data[["name"]].join(proba_df)
+
+    return predictions

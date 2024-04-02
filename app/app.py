@@ -1,37 +1,32 @@
 from io import StringIO
 
-import joblib
 import pandas as pd
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
 
+from animal_shelter.model.predict import predict as predict_model
+
 app = FastAPI()
 
-model = joblib.load("output/outcome_model.pickle")
+@app.get("/ping/")
+def ping():
+    return "pong"
 
-
-@app.post("predict/")
-def predict(file: UploadFile = File(...)) -> StreamingResponse:
+@app.post("/predict/")
+def predict(input: UploadFile = File()) -> StreamingResponse:
     """
     Endpoint definition to showcase how to stream output as .csv files.
     """
-    input_data = pd.read_csv(file.file)
 
-    # Process data.
-    X_test = input_data.rename(
-        {"AnimalType": "animal_type", "SexuponOutcome": "sex_upon_outcome"}, axis=1
-    )
-    simple_cols = ["animal_type", "sex_upon_outcome"]
-    X_pred_dummies = pd.get_dummies(X_test.loc[:, simple_cols])
+    # In this case the input data is uploaded via the API
+    # Alternatively, the data could be a reference to version-controlled data somewhere
+    input_data = input.file
+
+    # The model could be specified as env variable in the server (or as an API parameter)
+    model_path = "../output/model.pickle"
 
     # Create predictions.
-    y_pred = model.predict_proba(X_pred_dummies)
-
-    # Combine predictions with class names and animal name.
-    classes = model.classes_.tolist()
-    proba_df = pd.DataFrame(y_pred, columns=classes)
-
-    predictions = input_data[["Name"]].join(proba_df)
+    predictions = predict_model(input_data, model_path)
 
     response = _convert_df_to_response(predictions)
     return response
