@@ -1,20 +1,15 @@
-import sys
-import contextlib        
+import time
 
-@contextlib.contextmanager
-def looking_glass():
-    
-    # preserve the original functionality
-    original_write = sys.stdout.write
-    
-    # define custom function to reverse print statements
-    def reverse_write(text):
-        original_write(text[::-1])
-    
-    # replace with the new function
-    sys.stdout.write = reverse_write
-    
-    yield 'JABBERWOCKY'
+class Timer():
+    def __init__(self, description):
+        self.description = description
         
-    # tear down context and revert to original print functionality
-    sys.stdout.write = original_write
+    def __enter__(self):
+        self.start = time.time()
+        
+    def __exit__(self, type, value, traceback):
+        self.end = time.time()
+        print(f"{self.description}: {self.end - self.start}")
+
+with Timer("Timed-time:"):
+    time.sleep(2)

@@ -1,13 +1,25 @@
-from time import time
+import contextlib        
+import os
+import time 
 
-class Timer(object):
+@contextlib.contextmanager
+def in_dir(path):
+    old_path = os.getcwd()
+    os.chdir(path)
+    yield
+    os.chdir(old_path)
+
+with in_dir('../../'):
+    notebook_files = os.listdir('notebooks')
     
-    def __init__(self, description):
-        self.description = description
-        
-    def __enter__(self):
-        self.start = time()
-        
-    def __exit__(self, type, value, traceback):
-        self.end = time()
-        print(f"{self.description}: {self.end - self.start}")
+notebook_files
+
+@contextlib.contextmanager
+def timer(description):
+    start = time.time()
+    yield
+    end = time.time()
+    print(f"{description}: {end - start}")
+
+with timer("timed-time"):
+    time.sleep(1.5)

@@ -1,9 +1,18 @@
-import contextlib        
-from time import time
+import os 
 
-@contextlib.contextmanager
-def my_timer(description):
-    start = time()
-    yield 'JABBERWOCKY'
-    end = time()
-    print(f"{description}: {end - start}")
+class InDir:
+    def __init__(self, path):
+        self.old_path = os.getcwd()
+        self.path = path
+
+    def __enter__(self):
+        os.chdir(self.path)
+        return None
+
+    def __exit__(self, exc_class, exc, traceback):
+        os.chdir(self.old_path)
+
+with InDir('../../'):
+    notebook_files = os.listdir('notebooks')
+    
+notebook_files
