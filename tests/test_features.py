@@ -20,7 +20,7 @@ def test_check_has_name():
 
 
 @pytest.fixture(scope="module")
-def sex():
+def sex_upon_outcome():
     return pd.Series(
         [
             "Neutered Male",
@@ -33,14 +33,14 @@ def sex():
     )
 
 
-def test_get_sex(sex):
-    result = get_sex(sex)
+def test_get_sex(sex_upon_outcome):
+    result = get_sex(sex_upon_outcome)
     expected = pd.Series(["male", "female", "male", "female", "unknown", "unknown"])
     assert_series_equal(result, expected)
 
 
-def test_get_neutered(sex):
-    result = get_neutered(sex)
+def test_get_neutered(sex_upon_outcome):
+    result = get_neutered(sex_upon_outcome)
     expected = pd.Series(["fixed", "fixed", "intact", "intact", "unknown", "unknown"])
     assert_series_equal(result, expected)
 
