@@ -16,3 +16,6 @@ venv.bak/
 
 output/**
 !output/.gitkeep
+
+.DS_Store
+.idea/
