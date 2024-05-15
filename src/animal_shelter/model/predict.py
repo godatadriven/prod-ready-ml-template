@@ -45,7 +45,6 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     logger.info("Generating predictions")
 
-
     y_pred = model.predict_proba(X)
 
     # Combine predictions with class names and animal name.

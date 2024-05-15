@@ -5,6 +5,7 @@ import pytest
 
 from animal_shelter import features
 
+
 def test_check_has_name():
     s = pd.Series(["Ivo", "Henk", "unknown"])
     result = features._check_has_name(s)
