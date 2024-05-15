@@ -57,3 +57,7 @@ extend-select = [
  # "D"   # pydocstyle
 ]
 ignore = ["E721"]
+
+
+[tool.mypy]
+ignore_missing_imports = true
