@@ -7,4 +7,5 @@ endpoint = "predict"
 
 r = requests.post(f"http://127.0.0.1:8000/{endpoint}", files=test_file)
 
+print(r.headers)
 print(r.text)
