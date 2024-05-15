@@ -11,7 +11,7 @@ def set_date_as_index(df, date_col='date'):
 def filter_date(df, start='2004', end='2014'):
     return df.loc[start:end]
 
-def resample(df, sample_by='M', col='category', agg_func='count'):
+def resample(df, sample_by='ME', col='category', agg_func='count'):
     return df.resample(sample_by)[[col]].agg(agg_func)
 
 def get_rolling(df, window=10, col='category', agg_func='mean'):

@@ -50,7 +50,7 @@ def filter_date(df, start='2004', end='2014'):
 
 @log_shape
 @log_time
-def resample(df, sample='M', value='category', agg='count'):
+def resample(df, sample='ME', value='category', agg='count'):
     return df.resample(sample)[[value]].agg(agg)
 
 @log_shape
