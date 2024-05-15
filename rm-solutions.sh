@@ -9,5 +9,6 @@ rm -r app
 rm -r cli
 rm -r src
 rm -r tests
+rm -r .github
 
 rm rm-solutions.sh
