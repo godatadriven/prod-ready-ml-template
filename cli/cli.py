@@ -1,7 +1,6 @@
 import logging
 from pathlib import Path
 
-import pandas as pd
 import typer
 
 from animal_shelter.model.train import train as train_model

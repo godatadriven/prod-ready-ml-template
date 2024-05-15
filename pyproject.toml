@@ -47,7 +47,8 @@ exclude = [
     ".pytype",
     ".ruff_cache",
      ".venv",
-     "slides"
+     "slides",
+     "notebooks",
      ]
 
 [tool.ruff.lint]
@@ -55,3 +56,4 @@ extend-select = [
   "UP",  # pyupgrade
  # "D"   # pydocstyle
 ]
+ignore = ["E721"]
