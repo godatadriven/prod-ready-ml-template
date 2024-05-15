@@ -35,8 +35,8 @@ class PydanticUser(BaseModel):
         return v
 
     @field_validator('password2')
-    def passwords_match(cls, v, values):
-        if v != values.data['password1']:
+    def passwords_match(cls, v, info):
+        if v != info.data['password1']:
             raise ValueError('passwords do not match')
         return v
 
