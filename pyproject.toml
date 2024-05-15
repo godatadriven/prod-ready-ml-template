@@ -54,9 +54,14 @@ exclude = [
 [tool.ruff.lint]
 extend-select = [
   "UP",  # pyupgrade
- # "D"   # pydocstyle
+ # "D",   # pydocstyle
+ "N" # PEP8
 ]
 ignore = ["E721"]
+
+[tool.ruff.lint.pep8-naming]
+# Variables and function arguments can be called `X` instead of PEP8's `x`
+extend-ignore-names = ["X"]
 
 
 [tool.mypy]
