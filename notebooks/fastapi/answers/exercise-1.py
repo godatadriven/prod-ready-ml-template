@@ -1,7 +1,6 @@
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List
 
 from pydantic import BaseModel
 
@@ -12,7 +11,7 @@ class PydanticUser(BaseModel):
     id: int
     name: str = "John Doe"
     signup_ts: datetime | None  = None
-    friend_ids: List[int] | None = None
+    friend_ids: list[int] | None = None
 
 # b)
 

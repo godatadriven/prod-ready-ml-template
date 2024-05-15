@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import List
 
 from pydantic import BaseModel, field_validator
 
@@ -9,7 +8,7 @@ class PydanticUser(BaseModel):
     id: int
     name: str = "John Doe"
     signup_ts: datetime | None = None
-    friend_ids: List[int] | None = None
+    friend_ids: list[int] | None = None
 
     @field_validator("signup_ts")
     def signup_ts_not_in_future(cls, v):
@@ -26,7 +25,7 @@ class PydanticUser(BaseModel):
     id: int
     name: str = "John Doe"
     signup_ts: datetime | None = None
-    friend_ids: List[int] | None = None
+    friend_ids: list[int] | None = None
     password1: str
     password2: str
 
