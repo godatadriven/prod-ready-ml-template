@@ -8,12 +8,23 @@ This repository contains the material needed for the "Production Ready Machine L
 
 Since you're reading this, it means you've successfully gained access to this repo 🎉. Now let's get you all setup for the training.
 
-## Getting Started
+## Getting Startedpoetry config virtualenvs.in-project true
 
 We advise to walk through the following steps _before_ the actual training, so we can catch any potential problems in time.
 If you run into problems, please contact your trainer so that we can help out.
 
-If you have a local Python installation and you can set up Jupyter and Poetry, you can just clone this repository. You will be able to follow the training using your own setup and the editor of your choice.
+To follow this training you have two options:
+
+### Following the training locally
+
+If you are comfortable managing your local Python and poetry installations, you can follow the training using your own setup and the editor of your choice.
+
+You need to:
+1. Clone (you need to clone via ssh) or download this repo.
+2. Install Python with a version greater than `3.10`.
+3. Install poetry and configure `poetry config virtualenvs.in-project true`.
+
+### Using Codespaces
 
 Alternatively, we provide a _devcontainer_ that spins up a virtual environment with everything ready for the training using VS code as an editor.
 The steps to set this up are:
