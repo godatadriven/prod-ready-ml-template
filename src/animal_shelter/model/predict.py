@@ -50,7 +50,7 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     # Combine predictions with class names and animal name.
     classes = model.classes_.tolist()
-    proba_df = pd.DataFrame(y_pred, columns=classes)
+    proba_df = pd.DataFrame(y_pred, columns=classes).rename(str.lower, axis=1)
 
     predictions = raw_data[["name"]].join(proba_df)
 

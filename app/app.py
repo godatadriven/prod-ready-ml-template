@@ -1,23 +1,51 @@
 from io import StringIO
+from math import isclose
 
 import pandas as pd
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel, ValidationError, model_validator
 
 from animal_shelter.model.predict import predict as predict_model
 
 app = FastAPI()
 
+
 @app.get("/ping/")
 def ping():
     return "pong"
 
-@app.post("/predict/")
-def predict(input: UploadFile = File()) -> StreamingResponse:
-    """
-    Endpoint definition to showcase how to stream output as .csv files.
-    """
 
+class Prediction(BaseModel):
+    name: str
+    adoption: float
+    died: float
+    euthanasia: float
+    return_to_owner: float
+    transfer: float
+
+    @model_validator(mode="after")
+    def prediction_adds_to_1(self):
+        assert isclose(
+            sum(
+                [
+                    self.adoption,
+                    self.died,
+                    self.euthanasia,
+                    self.return_to_owner,
+                    self.transfer,
+                ]
+            ),
+            1,
+        )
+        return self
+
+
+@app.post("/predict/")
+def predict(input: UploadFile = File()) -> list[Prediction]:
+    """
+    Endpoint definition to showcase how to generate a JSON response validated by Pydantic.
+    """
     # In this case the input data is uploaded via the API
     # Alternatively, the data could be a reference to version-controlled data somewhere
     input_data = input.file
@@ -26,8 +54,22 @@ def predict(input: UploadFile = File()) -> StreamingResponse:
     model_path = "../output/model.pickle"
 
     # Create predictions.
-    predictions = predict_model(input_data, model_path)
+    predictions = predict_model(input_data, model_path).to_dict(orient="records")
 
+    print(len(predictions))
+
+    return predictions
+
+
+@app.post("/predict_streaming/")
+def predict_streaming(input: UploadFile = File()) -> StreamingResponse:
+    """
+    Endpoint definition to showcase how to stream output as .csv files.
+    """
+
+    input_data = input.file
+    model_path = "../output/model.pickle"
+    predictions = predict_model(input_data, model_path)
     response = _convert_df_to_response(predictions)
     return response
 
