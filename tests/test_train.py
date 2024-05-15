@@ -2,7 +2,7 @@ import pytest
 
 from sklearn.utils.validation import check_is_fitted
 from sklearn.exceptions import NotFittedError
-from animal_shelter.model.train import build_pipeline
+from animal_shelter.model import train
 
 @pytest.fixture()
 def pipeline():
@@ -14,7 +14,7 @@ def pipeline():
         "hair_type",
     ]
     numeric_features = ["days_upon_outcome"]
-    return build_pipeline(categorical_features, numeric_features)
+    return train.build_pipeline(categorical_features, numeric_features)
 
 
 def test_pipeline(pipeline):

@@ -3,18 +3,11 @@ from pandas.testing import assert_series_equal
 
 import pytest
 
-from animal_shelter.features import (
-    _check_has_name,
-    _get_sex,
-    _get_hair_type,
-    _get_neutered,
-    _compute_days_upon_outcome,
-)
-
+from animal_shelter import features
 
 def test_check_has_name():
     s = pd.Series(["Ivo", "Henk", "unknown"])
-    result = _check_has_name(s)
+    result = features._check_has_name(s)
     expected = pd.Series([True, True, False])
     assert_series_equal(result, expected)
 
@@ -34,13 +27,13 @@ def sex_upon_outcome():
 
 
 def test_get_sex(sex_upon_outcome):
-    result = _get_sex(sex_upon_outcome)
+    result = features._get_sex(sex_upon_outcome)
     expected = pd.Series(["male", "female", "male", "female", "unknown", "unknown"])
     assert_series_equal(result, expected)
 
 
 def test_get_neutered(sex_upon_outcome):
-    result = _get_neutered(sex_upon_outcome)
+    result = features._get_neutered(sex_upon_outcome)
     expected = pd.Series(["fixed", "fixed", "intact", "intact", "unknown", "unknown"])
     assert_series_equal(result, expected)
 
@@ -55,7 +48,7 @@ def test_get_hair_type():
             "Chihuahua Longhair Mix",
         ]
     )
-    result = _get_hair_type(s)
+    result = features._get_hair_type(s)
     expected = pd.Series(["unknown", "unknown", "shorthair", "medium hair", "longhair"])
     assert_series_equal(result, expected)
 
@@ -73,6 +66,6 @@ def test_compute_days_upon_outcome():
             "2 day",
         ]
     )
-    result = _compute_days_upon_outcome(s)
+    result = features._compute_days_upon_outcome(s)
     expected = pd.Series([365.0, 2 * 365.0, 30.0, 2 * 30.0, 7.0, 14.0, 1.0, 2.0])
     assert_series_equal(result, expected)
