@@ -16,8 +16,8 @@ class Deck:
     def __str__(self):
         return f'Deck(suits={self.suits}, ranks={self.ranks})'
     
-    def __getitem__(self, position):
-        return self.cards[position]
+    def __getitem__(self, key):
+        return self.cards[key]
     
     def deal(self):
         dealt_card = self.cards.pop()
