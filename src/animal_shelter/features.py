@@ -17,16 +17,16 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
 
     """
     return df.assign(
-        is_dog            = lambda df: check_is_dog(df["animal_type"]),
-        has_name          = lambda df: check_has_name(df["name"]),
-        sex               = lambda df: get_sex(df["sex_upon_outcome"]),
-        neutered          = lambda df: get_neutered(df["sex_upon_outcome"]),
-        hair_type         = lambda df: get_hair_type(df["breed"]),
-        days_upon_outcome = lambda df: compute_days_upon_outcome(df["age_upon_outcome"]),
+        is_dog            = lambda df: _check_is_dog(df["animal_type"]),
+        has_name          = lambda df: _check_has_name(df["name"]),
+        sex               = lambda df: _get_sex(df["sex_upon_outcome"]),
+        neutered          = lambda df: _get_neutered(df["sex_upon_outcome"]),
+        hair_type         = lambda df: _get_hair_type(df["breed"]),
+        days_upon_outcome = lambda df: _compute_days_upon_outcome(df["age_upon_outcome"]),
     )
 
 
-def check_is_dog(animal_type: pd.Series) -> pd.Series:
+def _check_is_dog(animal_type: pd.Series) -> pd.Series:
     """Check if the animal is a dog, otherwise return False.
 
     Parameters
@@ -49,7 +49,7 @@ def check_is_dog(animal_type: pd.Series) -> pd.Series:
     return is_dog
 
 
-def check_has_name(name: pd.Series) -> pd.Series:
+def _check_has_name(name: pd.Series) -> pd.Series:
     """Check if the animal is not called 'unknown'.
 
     Parameters
@@ -66,7 +66,7 @@ def check_has_name(name: pd.Series) -> pd.Series:
     return name.str.lower() != "unknown"
 
 
-def get_sex(sex_upon_outcome: pd.Series) -> pd.Series:
+def _get_sex(sex_upon_outcome: pd.Series) -> pd.Series:
     """Determine if the sex was 'Male', 'Female' or unknown.
 
     Parameters
@@ -87,7 +87,7 @@ def get_sex(sex_upon_outcome: pd.Series) -> pd.Series:
     return sex
 
 
-def get_neutered(sex_upon_outcome: pd.Series) -> pd.Series:
+def _get_neutered(sex_upon_outcome: pd.Series) -> pd.Series:
     """Determine if an animal was intact or not.
 
     Parameters
@@ -110,7 +110,7 @@ def get_neutered(sex_upon_outcome: pd.Series) -> pd.Series:
     return neutered
 
 
-def get_hair_type(breed: pd.Series) -> pd.Series:
+def _get_hair_type(breed: pd.Series) -> pd.Series:
     """Get hair type of a breed.
 
     Parameters
@@ -135,7 +135,7 @@ def get_hair_type(breed: pd.Series) -> pd.Series:
     return hear_type
 
 
-def compute_days_upon_outcome(age_upon_outcome: pd.Series) -> pd.Series:
+def _compute_days_upon_outcome(age_upon_outcome: pd.Series) -> pd.Series:
     """Compute age in days upon outcome.
 
     Parameters
