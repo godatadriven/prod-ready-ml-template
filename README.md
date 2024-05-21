@@ -8,7 +8,7 @@ This repository contains the material needed for the "Production Ready Machine L
 
 Since you're reading this, it means you've successfully gained access to this repo 🎉. Now let's get you all setup for the training.
 
-## Getting Startedpoetry config virtualenvs.in-project true
+## Getting Started
 
 We advise to walk through the following steps _before_ the actual training, so we can catch any potential problems in time.
 If you run into problems, please contact your trainer so that we can help out.
