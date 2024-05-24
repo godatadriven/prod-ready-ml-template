@@ -12,8 +12,32 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from animal_shelter.data import load_data
 from animal_shelter.features import add_features
 
+def train(data: Path, model_path: Path) -> None:
+    "Train model on the provided data and save it to the `model_path`."
 
-def build_pipeline(cat_features: list, num_features: list) -> Pipeline:
+    logger = logging.getLogger(__name__)
+
+    raw_data = load_data(data)
+    with_features = add_features(raw_data)
+
+    categorical_features = [
+        "animal_type",
+        "is_dog",
+        "has_name",
+        "sex",
+        "hair_type",
+    ]
+    numeric_features = ["days_upon_outcome"]
+
+    X = with_features[categorical_features + numeric_features]
+    y = with_features["outcome_type"]
+    pipeline = _build_pipeline(categorical_features, numeric_features)
+    logger.debug("Fitting model")
+    model = _fit_model(pipeline, X, y)
+
+    _save_model(model, model_path)
+
+def _build_pipeline(cat_features: list, num_features: list) -> Pipeline:
     """
     Build the model pipeline
     :param cat_features: list of categorical features
@@ -37,7 +61,7 @@ def build_pipeline(cat_features: list, num_features: list) -> Pipeline:
     return clf_model
 
 
-def fit_model(model: Pipeline, X: pd.DataFrame, y: pd.Series) -> Pipeline:
+def _fit_model(model: Pipeline, X: pd.DataFrame, y: pd.Series) -> Pipeline:
     """
     Train the model
     :param model: model pipeline
@@ -49,7 +73,7 @@ def fit_model(model: Pipeline, X: pd.DataFrame, y: pd.Series) -> Pipeline:
     return model.fit(X, y)
 
 
-def save_model(model: Pipeline, path: Path) -> None:
+def _save_model(model: Pipeline, path: Path) -> None:
     """
     Save the model.
     :param model: model object
@@ -60,27 +84,3 @@ def save_model(model: Pipeline, path: Path) -> None:
     joblib.dump(model, path)
 
 
-def train(data: Path, model_path: Path) -> None:
-    "Train model on the provided data and save it to the `model_path`."
-
-    logger = logging.getLogger(__name__)
-
-    raw_data = load_data(data)
-    with_features = add_features(raw_data)
-
-    categorical_features = [
-        "animal_type",
-        "is_dog",
-        "has_name",
-        "sex",
-        "hair_type",
-    ]
-    numeric_features = ["days_upon_outcome"]
-
-    X = with_features[categorical_features + numeric_features]
-    y = with_features["outcome_type"]
-    pipeline = build_pipeline(categorical_features, numeric_features)
-    logger.debug("Fitting model")
-    model = fit_model(pipeline, X, y)
-
-    save_model(model, model_path)

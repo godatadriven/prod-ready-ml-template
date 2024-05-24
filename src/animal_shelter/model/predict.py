@@ -8,17 +8,6 @@ from sklearn.pipeline import Pipeline
 from animal_shelter.data import load_data
 from animal_shelter.features import add_features
 
-
-def load_model(model_path: Path) -> Pipeline:
-    """
-    Load the model from the given path
-    :param model_path: path to the model
-    :return: model pipeline
-    """
-    # This function could point to an experiment tracking system instead of to a local serialized model
-    return joblib.load(model_path)
-
-
 def predict(data: Path, model_path: Path) -> pd.DataFrame:
     """
     Generate predictions on the provided data.
@@ -41,7 +30,7 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     X = with_features[categorical_features + numeric_features]
     logger.debug("Using model %s", model_path)
-    model = load_model(model_path)
+    model = _load_model(model_path)
 
     logger.info("Generating predictions")
 
@@ -54,3 +43,14 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
     predictions = raw_data[["name"]].join(proba_df)
 
     return predictions
+
+def _load_model(model_path: Path) -> Pipeline:
+    """
+    Load the model from the given path
+    :param model_path: path to the model
+    :return: model pipeline
+    """
+    # This function could point to an experiment tracking system instead of to a local serialized model
+    return joblib.load(model_path)
+
+

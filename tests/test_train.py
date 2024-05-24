@@ -14,7 +14,7 @@ def pipeline():
         "hair_type",
     ]
     numeric_features = ["days_upon_outcome"]
-    return train.build_pipeline(categorical_features, numeric_features)
+    return train._build_pipeline(categorical_features, numeric_features)
 
 
 def test_pipeline(pipeline):
