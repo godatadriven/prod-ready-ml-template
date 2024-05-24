@@ -10,8 +10,9 @@ def test_convert_camel_case():
     assert data.convert_camel_case("camel-case") != "camel_case"
     assert data.convert_camel_case("camel_case") == "camel_case"
     assert data.convert_camel_case("camel case") != "camel_case"
-    with pytest.raises(TypeError):
+    with pytest.raises(TypeError) as exception:
         data.convert_camel_case(123)
+    assert "expected string or bytes" in str(exception.value)
 
 
 @pytest.fixture(scope="class")
