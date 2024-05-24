@@ -1,8 +1,7 @@
 import pytest
-
-from sklearn.utils.validation import check_is_fitted
-from sklearn.exceptions import NotFittedError
 from animal_shelter.model import train
+from sklearn.exceptions import NotFittedError
+from sklearn.utils.validation import check_is_fitted
 
 
 @pytest.fixture()

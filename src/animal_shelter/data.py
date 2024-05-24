@@ -1,7 +1,6 @@
+import logging
 import re
 from pathlib import Path
-
-import logging
 
 import pandas as pd
 

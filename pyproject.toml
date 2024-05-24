@@ -56,7 +56,8 @@ exclude = [
 extend-select = [
   "UP",  # pyupgrade
  # "D",   # pydocstyle
- "N" # PEP8
+ "N", # PEP8
+ "I"
 ]
 ignore = ["E721"]
 

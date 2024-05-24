@@ -1,7 +1,6 @@
 # import pandas as pd
 # from pandas.testing import assert_series_equal
 import pytest
-
 from animal_shelter import data
 
 

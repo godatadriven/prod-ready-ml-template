@@ -1,14 +1,13 @@
 import logging
 from pathlib import Path
-import joblib
 
+import joblib
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from animal_shelter.data import load_data
 from animal_shelter.features import add_features

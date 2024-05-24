@@ -2,9 +2,8 @@ import logging
 from pathlib import Path
 
 import typer
-
-from animal_shelter.model.train import train as train_model
 from animal_shelter.model.predict import predict as predict_model
+from animal_shelter.model.train import train as train_model
 
 app = typer.Typer()
 

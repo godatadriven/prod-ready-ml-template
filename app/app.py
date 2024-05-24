@@ -2,11 +2,10 @@ from io import StringIO
 from math import isclose
 
 import pandas as pd
+from animal_shelter.model.predict import predict as predict_model
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, model_validator
-
-from animal_shelter.model.predict import predict as predict_model
 
 app = FastAPI()
 
