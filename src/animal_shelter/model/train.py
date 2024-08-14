@@ -12,6 +12,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from animal_shelter.data import load_data
 from animal_shelter.features import add_features
 
+
 def train(data: Path, model_path: Path) -> None:
     "Train model on the provided data and save it to the `model_path`."
 

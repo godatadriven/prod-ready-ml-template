@@ -8,6 +8,7 @@ from sklearn.pipeline import Pipeline
 from animal_shelter.data import load_data
 from animal_shelter.features import add_features
 
+
 def predict(data: Path, model_path: Path) -> pd.DataFrame:
     """
     Generate predictions on the provided data.
