@@ -38,6 +38,7 @@ def train(data: Path, model_path: Path) -> None:
 
     _save_model(model, model_path)
 
+
 def _build_pipeline(cat_features: list, num_features: list) -> Pipeline:
     """
     Build the model pipeline
@@ -83,5 +84,3 @@ def _save_model(model: Pipeline, path: Path) -> None:
     logger = logging.getLogger(__name__)
     logger.info("Saving model at %s", path)
     joblib.dump(model, path)
-
-

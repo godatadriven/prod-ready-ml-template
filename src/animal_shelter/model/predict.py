@@ -45,6 +45,7 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     return predictions
 
+
 def _load_model(model_path: Path) -> Pipeline:
     """
     Load the model from the given path
@@ -53,5 +54,3 @@ def _load_model(model_path: Path) -> Pipeline:
     """
     # This function could point to an experiment tracking system instead of to a local serialized model
     return joblib.load(model_path)
-
-
