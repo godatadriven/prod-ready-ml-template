@@ -1,45 +1,57 @@
-[tool.poetry]
+[project]
 name = "animal-shelter"
 version = "0.1.0"
 description = ""
-authors = ["Xebia Data <academy@xebia.com>"]
+authors = [{ name = "Xebia Data", email = "academy@xebia.com" }]
+requires-python = ">=3.11,<4"
 readme = "README.md"
-packages = [
-    {include = "animal_shelter", from = "src"},
-    {include = "cli/cli.py"}
-    ]
+dependencies = [
+    "typer>=0.9.0,<0.10",
+    "fastapi>=0.103.1,<0.104",
+    "matplotlib>=3.8.0,<4",
+    "seaborn>=0.12.2,<0.13",
+    "scikit-learn>=1.3.1,<2",
+    "uvicorn>=0.23.2,<0.24",
+    "pandas>=2.2.0,<3",
+    "joblib>=1.3.2,<2",
+    "python-multipart>=0.0.9,<0.0.10",
+    "pydantic>=2.7.1,<3",
+    "pydantic-settings>=2.2.1,<3",
+    "requests>=2.31.0,<3",
+]
 
-[tool.poetry.scripts]
+[project.scripts]
 animal_cli = "cli.cli:app"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-typer = "^0.9.0"
-fastapi = "^0.103.1"
-matplotlib = "^3.8.0"
-seaborn = "^0.12.2"
-scikit-learn = "^1.3.1"
-uvicorn = "^0.23.2"
-pandas = "^2.2.0"
-joblib = "^1.3.2"
-python-multipart = "^0.0.9"
-pydantic = "^2.7.1"
-pydantic-settings = "^2.2.1"
-requests = "^2.31.0"
+[dependency-groups]
+dev = [
+    "jupyter>=1.0.0,<2",
+    "ruff>=0.2.1,<0.3",
+    "isort>=5.12.0,<6",
+    "mypy~=1.7",
+    "pre-commit>=3.6.1,<4",
+    "pandas-stubs>=2.1.4.231227,<3",
+    "pytest>=8.0.0,<9",
+]
 
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/animal_shelter",
+    "cli/cli.py",
+]
 
-[tool.poetry.group.dev.dependencies]
-jupyter = "^1.0.0"
-ruff = "^0.2.1"
-isort = "^5.12.0"
-mypy = "^1.7"
-pre-commit = "^3.6.1"
-pandas-stubs = "^2.1.4.231227"
-pytest = "^8.0.0"
+[tool.hatch.build.targets.wheel]
+include = [
+    "src/animal_shelter",
+    "cli/cli.py",
+]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/animal_shelter" = "animal_shelter"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff]
 exclude = [
@@ -65,7 +77,6 @@ ignore = ["E721"]
 [tool.ruff.lint.pep8-naming]
 # Variables and function arguments can be called `X` instead of PEP8's `x`
 extend-ignore-names = ["X"]
-
 
 [tool.mypy]
 ignore_missing_imports = true
