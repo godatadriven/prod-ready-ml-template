@@ -17,9 +17,15 @@ repos:
   # - id: ruff-format
 - repo: local
   hooks:
-    - id: ruff
-      name: ruff
-      entry: ruff .
+    - id: ruff check
+      name: ruff check
+      entry: ruff check .
+      language: system
+      pass_filenames: false
+      always_run: true
+    - id: ruff format
+      name: ruff format
+      entry: ruff format .
       language: system
       pass_filenames: false
       always_run: true

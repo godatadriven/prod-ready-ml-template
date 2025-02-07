@@ -17,12 +17,12 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
 
     """
     return df.assign(
-        is_dog            = lambda df: _check_is_dog(df["animal_type"]),
-        has_name          = lambda df: _check_has_name(df["name"]),
-        sex               = lambda df: _get_sex(df["sex_upon_outcome"]),
-        neutered          = lambda df: _get_neutered(df["sex_upon_outcome"]),
-        hair_type         = lambda df: _get_hair_type(df["breed"]),
-        days_upon_outcome = lambda df: _compute_days_upon_outcome(df["age_upon_outcome"]),
+        is_dog=lambda df: _check_is_dog(df["animal_type"]),
+        has_name=lambda df: _check_has_name(df["name"]),
+        sex=lambda df: _get_sex(df["sex_upon_outcome"]),
+        neutered=lambda df: _get_neutered(df["sex_upon_outcome"]),
+        hair_type=lambda df: _get_hair_type(df["breed"]),
+        days_upon_outcome=lambda df: _compute_days_upon_outcome(df["age_upon_outcome"]),
     )
 
 
@@ -164,3 +164,13 @@ def _compute_days_upon_outcome(age_upon_outcome: pd.Series) -> pd.Series:
     }
     days_upon_outcome = time.astype(float) * period.map(period_mapping)
     return days_upon_outcome
+
+
+categorical_features = [
+    "animal_type",
+    "is_dog",
+    "has_name",
+    "sex",
+    "hair_type",
+]
+numeric_features = ["days_upon_outcome"]

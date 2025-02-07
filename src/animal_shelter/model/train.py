@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from animal_shelter.data import load_data
-from animal_shelter.features import add_features
+from animal_shelter.features import add_features, categorical_features, numeric_features
 
 
 def train(data: Path, model_path: Path) -> None:
@@ -21,15 +21,6 @@ def train(data: Path, model_path: Path) -> None:
     raw_data = load_data(data)
     with_features = add_features(raw_data)
 
-    categorical_features = [
-        "animal_type",
-        "is_dog",
-        "has_name",
-        "sex",
-        "hair_type",
-    ]
-    numeric_features = ["days_upon_outcome"]
-
     X = with_features[categorical_features + numeric_features]
     y = with_features["outcome_type"]
     pipeline = _build_pipeline(categorical_features, numeric_features)
@@ -37,6 +28,7 @@ def train(data: Path, model_path: Path) -> None:
     model = _fit_model(pipeline, X, y)
 
     _save_model(model, model_path)
+
 
 def _build_pipeline(cat_features: list, num_features: list) -> Pipeline:
     """
@@ -83,5 +75,3 @@ def _save_model(model: Pipeline, path: Path) -> None:
     logger = logging.getLogger(__name__)
     logger.info("Saving model at %s", path)
     joblib.dump(model, path)
-
-

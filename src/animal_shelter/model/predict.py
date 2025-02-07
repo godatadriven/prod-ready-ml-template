@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.pipeline import Pipeline
 
 from animal_shelter.data import load_data
-from animal_shelter.features import add_features
+from animal_shelter.features import add_features, categorical_features, numeric_features
 
 
 def predict(data: Path, model_path: Path) -> pd.DataFrame:
@@ -19,15 +19,6 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     raw_data = load_data(data)
     with_features = add_features(raw_data)
-
-    categorical_features = [
-        "animal_type",
-        "is_dog",
-        "has_name",
-        "sex",
-        "hair_type",
-    ]
-    numeric_features = ["days_upon_outcome"]
 
     X = with_features[categorical_features + numeric_features]
     logger.debug("Using model %s", model_path)
@@ -45,6 +36,7 @@ def predict(data: Path, model_path: Path) -> pd.DataFrame:
 
     return predictions
 
+
 def _load_model(model_path: Path) -> Pipeline:
     """
     Load the model from the given path
@@ -53,5 +45,3 @@ def _load_model(model_path: Path) -> Pipeline:
     """
     # This function could point to an experiment tracking system instead of to a local serialized model
     return joblib.load(model_path)
-
-
