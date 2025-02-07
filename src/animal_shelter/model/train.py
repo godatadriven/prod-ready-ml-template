@@ -10,7 +10,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from animal_shelter.data import load_data
-from animal_shelter.features import add_features
+from animal_shelter.features import add_features, categorical_features, numeric_features
 
 
 def train(data: Path, model_path: Path) -> None:
@@ -20,15 +20,6 @@ def train(data: Path, model_path: Path) -> None:
 
     raw_data = load_data(data)
     with_features = add_features(raw_data)
-
-    categorical_features = [
-        "animal_type",
-        "is_dog",
-        "has_name",
-        "sex",
-        "hair_type",
-    ]
-    numeric_features = ["days_upon_outcome"]
 
     X = with_features[categorical_features + numeric_features]
     y = with_features["outcome_type"]
