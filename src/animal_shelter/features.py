@@ -17,12 +17,12 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
 
     """
     return df.assign(
-        is_dog            = lambda df: _check_is_dog(df["animal_type"]),
-        has_name          = lambda df: _check_has_name(df["name"]),
-        sex               = lambda df: _get_sex(df["sex_upon_outcome"]),
-        neutered          = lambda df: _get_neutered(df["sex_upon_outcome"]),
-        hair_type         = lambda df: _get_hair_type(df["breed"]),
-        days_upon_outcome = lambda df: _compute_days_upon_outcome(df["age_upon_outcome"]),
+        is_dog=lambda df: _check_is_dog(df["animal_type"]),
+        has_name=lambda df: _check_has_name(df["name"]),
+        sex=lambda df: _get_sex(df["sex_upon_outcome"]),
+        neutered=lambda df: _get_neutered(df["sex_upon_outcome"]),
+        hair_type=lambda df: _get_hair_type(df["breed"]),
+        days_upon_outcome=lambda df: _compute_days_upon_outcome(df["age_upon_outcome"]),
     )
 
 
