@@ -164,3 +164,13 @@ def _compute_days_upon_outcome(age_upon_outcome: pd.Series) -> pd.Series:
     }
     days_upon_outcome = time.astype(float) * period.map(period_mapping)
     return days_upon_outcome
+
+
+categorical_features = [
+    "animal_type",
+    "is_dog",
+    "has_name",
+    "sex",
+    "hair_type",
+]
+numeric_features = ["days_upon_outcome"]
