@@ -6,48 +6,36 @@ authors = [{ name = "Xebia Data", email = "academy@xebia.com" }]
 requires-python = ">=3.11,<4"
 readme = "README.md"
 dependencies = [
-    "typer>=0.9.0,<0.10",
-    "fastapi>=0.103.1,<0.104",
+    "typer>=0.9.0,<0.16",
+    "fastapi>=0.103.1,<0.116",
     "matplotlib>=3.8.0,<4",
     "seaborn>=0.12.2,<0.13",
     "scikit-learn>=1.3.1,<2",
-    "uvicorn>=0.23.2,<0.24",
+    "uvicorn>=0.23.2,<0.35",
     "pandas>=2.2.0,<3",
     "joblib>=1.3.2,<2",
-    "python-multipart>=0.0.9,<0.0.10",
+    "python-multipart>=0.0.9,<0.0.20",
     "pydantic>=2.7.1,<3",
     "pydantic-settings>=2.2.1,<3",
     "requests>=2.31.0,<3",
 ]
 
+[uv.tool.sources]
+animal_shelter = { path = "./src/animal_shelter" }
+
 [project.scripts]
-animal_cli = "cli.cli:app"
+animal-cli = "animal_shelter.cli:app"
 
 [dependency-groups]
 dev = [
     "jupyter>=1.0.0,<2",
-    "ruff>=0.2.1,<0.3",
+    "ruff>=0.2.1,<1",
     "isort>=5.12.0,<6",
     "mypy~=1.7",
     "pre-commit>=3.6.1,<4",
     "pandas-stubs>=2.1.4.231227,<3",
     "pytest>=8.0.0,<9",
 ]
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "src/animal_shelter",
-    "cli/cli.py",
-]
-
-[tool.hatch.build.targets.wheel]
-include = [
-    "src/animal_shelter",
-    "cli/cli.py",
-]
-
-[tool.hatch.build.targets.wheel.sources]
-"src/animal_shelter" = "animal_shelter"
 
 [build-system]
 requires = ["hatchling"]

@@ -1,6 +1,6 @@
 import requests
 
-test_file = {"input": open("../data/test.csv", "rb")}
+test_file = {"input": open("./data/test.csv", "rb")}
 
 endpoint = "predict"
 # endpoint = "predict_streaming"
