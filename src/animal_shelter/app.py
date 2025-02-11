@@ -50,7 +50,7 @@ def predict(input: UploadFile = File()) -> list[Prediction]:
     input_data = input.file
 
     # The model could be specified as env variable in the server (or as an API parameter)
-    model_path = "../output/model.pickle"
+    model_path = "./output/model.pkl"
 
     # Create predictions.
     predictions = predict_model(input_data, model_path).to_dict(orient="records")
@@ -67,7 +67,7 @@ def predict_streaming(input: UploadFile = File()) -> StreamingResponse:
     """
 
     input_data = input.file
-    model_path = "../output/model.pickle"
+    model_path = "./output/model.pkl"
     predictions = predict_model(input_data, model_path)
     response = _convert_df_to_response(predictions)
     return response
