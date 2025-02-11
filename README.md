@@ -17,12 +17,12 @@ To follow this training you have two options:
 
 ### Following the training locally
 
-If you are comfortable managing your local Python and poetry installations, you can follow the training using your own setup and the editor of your choice.
+If you are comfortable managing your local Python and uv installations, you can follow the training using your own setup and the editor of your choice.
 
 You need to:
 1. Clone (you need to clone via ssh) or download this repo.
-2. Install Python with a version greater than `3.10`.
-3. Install poetry and configure `poetry config virtualenvs.in-project true`.
+2. Install Python with a version greater than `3.10` (we recommend 3.11.6 as this version will be pinned in the codespaces).
+3. Install uv and configure `uv python install 3.11.6` and `uv python use 3.11.6`.
 
 ### Using Codespaces
 
@@ -36,7 +36,7 @@ The steps to set this up are:
 
    > [Codespaces](https://docs.github.com/en/codespaces/overview) allow you to work on a repository on a computer other than your own, saving you from the trouble of setting everything up yourself.
 
-It can take a few minutes to set up, but eventually you will be able to check that everything is ready by typing `poetry` into the terminal.
+It can take a few minutes to set up, but eventually you will be able to check that everything is ready by typing `uv` into the terminal.
 
 ![images/codespace-browser.png](images/codespace-browser.png)
 
