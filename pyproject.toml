@@ -20,8 +20,11 @@ dependencies = [
     "requests>=2.31.0,<3",
 ]
 
+[uv.tool.sources]
+animal_shelter = { path = "./src/animal_shelter" }
+
 [project.scripts]
-animal_cli = "cli.cli:app"
+animal-cli = "animal_shelter.cli:app"
 
 [dependency-groups]
 dev = [
@@ -33,21 +36,6 @@ dev = [
     "pandas-stubs>=2.1.4.231227,<3",
     "pytest>=8.0.0,<9",
 ]
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "src/animal_shelter",
-    "cli/cli.py",
-]
-
-[tool.hatch.build.targets.wheel]
-include = [
-    "src/animal_shelter",
-    "cli/cli.py",
-]
-
-[tool.hatch.build.targets.wheel.sources]
-"src/animal_shelter" = "animal_shelter"
 
 [build-system]
 requires = ["hatchling"]
