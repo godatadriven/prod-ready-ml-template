@@ -13,7 +13,8 @@
                 "matangover.mypy"
             ],
             "settings": {
-                "terminal.integrated.copyOnSelection": true
+                "terminal.integrated.copyOnSelection": true,
+                "mypy.runUsingActiveInterpreter": true,
             }
         }
     }
