@@ -4,14 +4,14 @@
 
 Hi! 👋🏻
 
-This repository contains the material needed for the "Production Ready Machine Learning" training.
+This repository contains the material needed for the **Production Ready Machine Learning** training.
 
 Since you're reading this, it means you've successfully gained access to this repo 🎉. Now let's get you all setup for the training.
 
 ## Getting Started
 
-We advise to walk through the following steps _before_ the actual training, so we can catch any potential problems in time.
-If you run into problems, please contact your trainer so that we can help out.
+We advise to walk through the following steps ***before*** the actual training, so we can catch any potential problems in time.
+If you run into problems, please contact your trainer, so that he/she can help out.
 
 To follow this training you have two options:
 
@@ -21,8 +21,8 @@ If you are comfortable managing your local Python and uv installations, you can 
 
 You need to:
 1. Clone (you need to clone via ssh) or download this repo.
-2. Install Python with a version greater than `3.10` (we recommend 3.11.6 as this version will be pinned in the codespaces).
-3. Install uv and configure `uv python install 3.11.6` and `uv python use 3.11.6`.
+2. Install `uv`. See here for instructions: https://docs.astral.sh/uv/getting-started/installation/
+3. Install Python using `uv` with the Python version being >=3.10 (we recommend 3.11.6, as this will be the pinned version in the codespaces).<br>You can use these commands: `uv python install 3.11.6` and `uv python use 3.11.6`.
 
 ### Using Codespaces
 
@@ -48,4 +48,4 @@ That's it! You should be all setup now. If you are using VS Code desktop you can
 
 ## About
 
-Xebia Data (c) 2024.
+Xebia Data (c) 2025.
