@@ -20,11 +20,10 @@ dependencies = [
     "requests>=2.31.0,<3",
 ]
 
-[uv.tool.sources]
-animal_shelter = { path = "./src/animal_shelter" }
 
 [project.scripts]
 animal-cli = "animal_shelter.cli:app"
+
 
 [dependency-groups]
 dev = [
@@ -37,9 +36,11 @@ dev = [
     "pytest>=8.0.0,<9",
 ]
 
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
 
 [tool.ruff]
 exclude = [
@@ -53,6 +54,7 @@ exclude = [
      "notebooks",
      ]
 
+
 [tool.ruff.lint]
 extend-select = [
   "UP",  # pyupgrade
@@ -62,9 +64,11 @@ extend-select = [
 ]
 ignore = ["E721"]
 
+
 [tool.ruff.lint.pep8-naming]
 # Variables and function arguments can be called `X` instead of PEP8's `x`
 extend-ignore-names = ["X"]
+
 
 [tool.mypy]
 ignore_missing_imports = true
