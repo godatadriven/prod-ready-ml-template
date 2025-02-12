@@ -5,7 +5,7 @@
 rm pyproject.toml
 rm uv.lock
 rm .pre-commit-config.yaml
-rm -r use_api.py
+rm use_api.py
 rm -r src
 rm -r tests
 rm -r .github
