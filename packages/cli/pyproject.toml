@@ -1,0 +1,13 @@
+[project]
+name = "cli"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11.6"
+dependencies = []
+
+[project.scripts]
+animal-cli = "cli.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
