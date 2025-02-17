@@ -1,11 +1,16 @@
 import requests
 
-test_file = {"input": open("./data/test.csv", "rb")}
+def main():
 
-endpoint = "predict"
-# endpoint = "predict_streaming"
+    test_file = {"input": open("./data/test.csv", "rb")}
 
-r = requests.post(f"http://127.0.0.1:8000/{endpoint}", files=test_file)
+    endpoint = "predict"
+    # endpoint = "predict_streaming"
 
-print(r.headers)
-print(r.text)
+    r = requests.post(f"http://127.0.0.1:8000/{endpoint}", files=test_file)
+
+    print(r.headers)
+    print(r.text)
+    
+if __name__ == "__main__":
+    main()
