@@ -10,5 +10,5 @@ rm .python-version
 rm -r src
 rm -r tests
 rm -r .github
-
+rm -r packages
 rm rm-solutions.sh
