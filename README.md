@@ -22,7 +22,7 @@ If you are comfortable managing your local Python and uv installations, you can 
 You need to:
 1. Clone (you need to clone via ssh) or download this repo.
 2. Install `uv`. See here for instructions: https://docs.astral.sh/uv/getting-started/installation/
-3. Install Python using `uv` with the Python version being >=3.10 (we recommend 3.11.6, as this will be the pinned version in the codespaces).<br>You can use these commands: `uv python install 3.11.6` and `uv python use 3.11.6`.
+3. Install Python using `uv` with the Python version being >=3.10 (we recommend 3.11.6, as this will be the pinned version in the codespaces).<br>You can use these commands: `uv python install 3.11.6` and `uv python pin 3.11.6`.
 
 ### Using Codespaces
 
