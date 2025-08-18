@@ -1,7 +1,7 @@
 import requests
 
-def main():
 
+def main():
     test_file = {"input": open("./data/test.csv", "rb")}
 
     endpoint = "predict"
@@ -11,6 +11,7 @@ def main():
 
     print(r.headers)
     print(r.text)
-    
+
+
 if __name__ == "__main__":
     main()

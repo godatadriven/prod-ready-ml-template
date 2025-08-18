@@ -79,5 +79,3 @@ extend-ignore-names = ["X"]
 
 [tool.mypy]
 ignore_missing_imports = true
-
-

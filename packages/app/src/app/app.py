@@ -9,9 +9,11 @@ from pydantic import BaseModel, model_validator
 
 app = FastAPI()
 
+
 @app.get("/")
 def read_root():
     return "Welcome to the Animal Shelter API!"
+
 
 @app.get("/ping/")
 def ping():
