@@ -1,5 +1,6 @@
-import uvicorn
 import time
+
+import uvicorn
 
 
 def main() -> None:

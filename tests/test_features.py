@@ -1,7 +1,8 @@
 import pandas as pd
 import pytest
-from animal_shelter import features
 from pandas.testing import assert_series_equal
+
+from animal_shelter import features
 
 
 def test_check_has_name():
