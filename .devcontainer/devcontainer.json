@@ -14,7 +14,8 @@
             ],
             "settings": {
                 "terminal.integrated.copyOnSelection": true,
-                "mypy.runUsingActiveInterpreter": true
+                "mypy.runUsingActiveInterpreter": true,
+                "python.defaultInterpreterPath": "/home/vscode/.local/share/uv/python/cpython-3.12.*/bin/python3.12"
             }
         }
     }
