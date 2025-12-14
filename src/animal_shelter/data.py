@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 
+
 def load_data(path):
     """Load the data and convert the column names.
 
