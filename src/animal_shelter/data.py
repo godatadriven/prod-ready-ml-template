@@ -1,5 +1,8 @@
-import pandas as pd
+"""Data loading utilities."""
+
 import re
+
+import pandas as pd
 
 
 def load_data(path):
@@ -9,10 +12,12 @@ def load_data(path):
     ----------
     path : str
         Path to data
+
     Returns
     -------
     df : pandas.DataFrame
         DataFrame with data
+
     """
     df = (
         pd.read_csv(path, parse_dates=["DateTime"])
